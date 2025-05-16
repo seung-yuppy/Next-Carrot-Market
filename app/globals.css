@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  a {
+    @apply text-blue-500;
   }
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* base(기본값을 지정함) */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-bigger-hello {
+    @apply text-3xl font-semibold;
   }
 }
+
+@layer components {
+  .btn {
+    @apply w-full bg-black h-10 text-white rounded-sexy-name mt-tomato;
+  }
+}
+/* 재사용을 위한 방법 */
