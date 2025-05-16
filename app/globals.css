@@ -4,7 +4,7 @@
 
 @layer base {
   a {
-    @apply text-blue-500;
+    @apply text-orange-500 hover:underline underline-offset-4;
   }
 }
 /* base(기본값을 지정함) */
@@ -16,8 +16,8 @@
 }
 
 @layer components {
-  .btn {
-    @apply w-full bg-black h-10 text-white rounded-sexy-name mt-tomato;
+  .primary-btn {
+    @apply w-full bg-orange-500 text-white text-lg font-medium rounded-md text-center hover:bg-orange-400 transition-colors;
   }
 }
 /* 재사용을 위한 방법 */
