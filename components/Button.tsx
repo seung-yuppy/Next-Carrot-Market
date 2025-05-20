@@ -3,11 +3,11 @@
 import { ButtonHTMLAttributes } from "react";
 import { useFormStatus } from "react-dom";
 
-interface IFormButton {
+interface IButton {
   text: string;
 }
 
-export default function FormButton({ text, ...rest }: IFormButton & ButtonHTMLAttributes<HTMLButtonElement>) {
+export default function Button({ text, ...rest }: IButton & ButtonHTMLAttributes<HTMLButtonElement>) {
   // form의 자식 요소에서만 사용해야 한다 --> 자동으로 부모 form을 찾는다
   const { pending } = useFormStatus();
 

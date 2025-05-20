@@ -1,8 +1,19 @@
-import FormButton from "@/components/form-button";
-import FormInput from "@/components/Input";
+"use client";
+
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 import HomeButton from "@/components/home-button";
+import { useFormState } from "react-dom";
+import { smsLogIn } from "./action";
+
+const initialState = {
+  verificationcode: false,
+  error: undefined
+}
 
 export default function SMSLogin() {
+  const [state, dispatch] = useFormState(smsLogIn, initialState);
+
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
       <div className="flex justify-between">
@@ -12,23 +23,24 @@ export default function SMSLogin() {
         </div>
         <HomeButton />
       </div>
-
-      <form className="flex flex-col gap-3">
-        <FormInput
+      <form className="flex flex-col gap-3" action={dispatch}>
+        <Input
           type="number"
           placeholder="Phone Number"
           required
           name="phonenumber"
-          error={[]}
+          error={state?.error?.formErrors}
         />
-        <FormInput
+        {state.verificationcode && <Input
           type="number"
           placeholder="Verification Code"
           required
           name="verificationcode"
-          error={[]}
-        />
-        <FormButton loading={false} text="Verify" />
+          min={100000}
+          max={999999}
+          error={state?.error?.formErrors}
+        />}
+        <Button text={state.verificationcode ? "Verify" : "Send Verification SMS"} />
       </form>
     </div>
   );
