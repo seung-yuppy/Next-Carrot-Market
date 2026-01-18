@@ -14,8 +14,7 @@ export default function Button({ text, ...rest }: IButton & ButtonHTMLAttributes
   return (
     <button
       type="submit"
-      className="primary-btn py-2.5 
-    disabled:bg-neutral-400 disabled:text-neutral-200 disabled:cursor-not-allowed"
+      className="primary-btn py-2.5 disabled:bg-neutral-400 disabled:text-neutral-200 disabled:cursor-not-allowed"
       disabled={pending}
       {...rest}
     >
